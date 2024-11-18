@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LAPORAN TEORI</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --heading-color: #2c3e50;
+            --link-color: #3498db;
+            --border-color: #ddd;
+            --section-bg: #fff;
+        }
+
+        .messy-mode {
+            --bg-color: #ff00ff;
+            --text-color: #00ff00;
+            --heading-color: #ff0000;
+            --link-color: #ffff00;
+            --border-color: #0000ff;
+            --section-bg: #800080;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(10px, 3vw, 20px);
+        }
+
+        h1, h2, h3 {
+            color: var(--heading-color);
+            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            border-bottom: 3px solid var(--border-color);
+            padding-bottom: clamp(5px, 2vw, 10px);
+            margin-top: clamp(10px, 3vw, 20px);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: clamp(1.4em, 4vw, 1.8em);
+            margin-top: clamp(10px, 3vw, 20px);
+        }
+
+        h3 {
+            font-size: clamp(1.2em, 3vw, 1.5em);
+            cursor: pointer;
+            padding: clamp(8px, 2vw, 10px);
+            background-color: var(--section-bg);
+            border-radius: 5px;
+            margin-top: clamp(15px, 3vw, 20px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        h3:hover {
+            background-color: var(--link-color);
+            color: var(--section-bg);
+        }
+
+        h3:active {
+            transform: scale(0.98);
+        }
+
+        .content-section {
+            background-color: var(--section-bg);
+            padding: clamp(10px, 3vw, 20px);
+            margin: clamp(8px, 2vw, 10px) 0;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+
+        .mode-switch {
+            position: fixed;
+            top: clamp(10px, 3vw, 20px);
+            right: clamp(10px, 3vw, 20px);
+            padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+            background-color: var(--heading-color);
+            color: var(--section-bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: clamp(14px, 2.5vw, 16px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            touch-action: manipulation;
+        }
+
+        .mode-switch:hover {
+            transform: scale(1.05);
+        }
+
+        .mode-switch:active {
+            transform: scale(0.95);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        i {
+            font-style: italic;
+            color: var(--link-color);
+        }
+
+        @media screen and (min-width: 600px) and (max-width: 900px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        @media screen and (min-width: 901px) and (max-width: 1200px) {
+            .container {
+                width: 85%;
+            }
+        }
+
+        @media screen and (min-width: 1201px) {
+            .container {
+                width: 80%;
+            }
+        }
+
+        @media (hover: none) {
+            h3:hover {
+                background-color: var(--section-bg);
+                color: var(--heading-color);
+            }
+        }
+
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 5px;
+            }
+
+            h1 {
+                margin-top: 5px;
+            }
+
+            .mode-switch {
+                position: absolute;
+            }
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio: 2),
+               screen and (min-resolution: 192dpi) {
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        @media print {
+            .mode-switch {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .content-section {
+                break-inside: avoid;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #f5f5f5;
+                --heading-color: #4a9eff;
+                --link-color: #66b3ff;
+                --border-color: #333;
+                --section-bg: #2d2d2d;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mode-switch" onclick="toggleMode()">Ubah Mode Tampilan</button>
+    
+    <div class="container">
+        <h1>LAPORAN TEORI</h1>
+        <h2>Nadila Kusuma Dewi | 202331035</h2>
+
+        <h3 onclick="toggleContent('section1')">HTML (HyperText Markup Language)</h3>
+        <div id="section1" class="content-section">
+            <ul>
+                <li><i>HTML</i> itu seperti kerangka dasar sebuah rumah. Dia yang membentuk struktur dasar dari website</li>
+                <li>Tanpa <i>HTML</i>, konten website tidak akan terorganisir dengan baik</li>
+                <li><i>HTML</i> memungkinkan kita menampilkan teks, gambar, video, link, dan elemen-elemen dasar lainnya</li>
+                <li>Sangat penting karena mesin pencari seperti Google membaca <i>HTML</i> untuk memahami isi website</li>
+            </ul>
+        </div>
+
+        <h3 onclick="toggleContent('section2')">CSS (Cascading Style Sheets)</h3>
+        <div id="section2" class="content-section">
+            <ul>
+                <li><i>CSS</i> itu seperti cat dan dekorasi rumah. Dia yang membuat website jadi cantik dan menarik</li>
+                <li>Tanpa <i>CSS</i>, website akan terlihat sangat polos dan membosankan</li>
+                <li><i>CSS</i> mengatur tampilan seperti warna, ukuran, jarak, tata letak, dan animasi sederhana</li>
+                <li>Membuat website jadi responsive (bisa menyesuaikan dengan berbagai ukuran layar)</li>
+            </ul>
+        </div>
+
+        <h3 onclick="toggleContent('section3')">JavaScript</h3>
+        <div id="section3" class="content-section">
+            <ul>
+                <li><i>JavaScript</i> seperti sistem elektronik dalam rumah yang membuat segala sesuatu bisa bergerak dan berinteraksi</li>
+                <li>Membuat website jadi lebih hidup dan interaktif</li>
+                <li>Bisa membuat fitur-fitur canggih seperti validasi form, animasi kompleks, dan update konten tanpa refresh</li>
+                <li>Memungkinkan website berkomunikasi dengan server untuk mengambil atau mengirim data</li>
+            </ul>
+        </div>
+
+        <h3 onclick="toggleContent('section4')">Cara Dasar Integrasi</h3>
+        <div id="section4" class="content-section">
+            <ul>
+                <li><i>HTML</i> sebagai struktur dasar</li>
+                <li><i>CSS</i> ditulis di dalam tag &lt;style&gt; atau file terpisah (.css)</li>
+                <li><i>JavaScript</i> ditulis di dalam tag &lt;script&gt; atau file terpisah (.js)</li>
+                <li>Ketiganya saling terhubung dan bekerja sama untuk membentuk website yang lengkap</li>
+            </ul>
+        </div>
+
+        <h3 onclick="toggleContent('section5')">Cara Kerja Bersama</h3>
+        <div id="section5" class="content-section">
+            <ul>
+                <li><i>HTML</i> menyediakan struktur dan konten</li>
+                <li><i>CSS</i> akan menghias elemen-elemen <i>HTML</i></li>
+                <li><i>JavaScript</i> akan menambahkan interaktivitas pada elemen-elemen tersebut</li>
+            </ul>
+        </div>
+
+        <h3 onclick="toggleContent('section6')">Best Practice</h3>
+        <div id="section6" class="content-section">
+            <ul>
+                <li>Pisahkan ketiga bahasa ini dalam file terpisah untuk kode yang lebih rapi</li>
+                <li><i>HTML</i> fokus pada struktur konten</li>
+                <li><i>CSS</i> fokus pada tampilan</li>
+                <li><i>JavaScript</i> fokus pada fungsi dan interaktivitas</li>
+                <li>Gunakan komentar untuk dokumentasi kode</li>
+                <li>Terapkan prinsip "separation of concerns" (pemisahan tanggung jawab)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let messyMode = false;
+
+        function toggleMode() {
+            messyMode = !messyMode;
+            document.body.classList.toggle('messy-mode');
+            localStorage.setItem('messyMode', messyMode);
+        }
+
+        function toggleContent(sectionId) {
+            if (confirm('Apakah Anda ingin menyembunyikan konten ini?')) {
+                const section = document.getElementById(sectionId);
+                section.classList.toggle('hidden');
+                
+                const hiddenSections = JSON.parse(localStorage.getItem('hiddenSections') || '{}');
+                hiddenSections[sectionId] = section.classList.contains('hidden');
+                localStorage.setItem('hiddenSections', JSON.stringify(hiddenSections));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMessyMode = localStorage.getItem('messyMode') === 'true';
+            if (savedMessyMode) {
+                document.body.classList.add('messy-mode');
+                messyMode = true;
+            }
+
+            const hiddenSections = JSON.parse(localStorage.getItem('hiddenSections') || '{}');
+            Object.entries(hiddenSections).forEach(([sectionId, isHidden]) => {
+                if (isHidden) {
+                    const section = document.getElementById(sectionId);
+                    if (section) section.classList.add('hidden');
+                }
+            });
+        });
+
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 200);
+        });
+
+        document.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            if (e.target.click) {
+                e.target.click();
+            }
+        }, false);
+    </script>
+</body>
+</html>
